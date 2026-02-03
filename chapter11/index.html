@@ -1,0 +1,1611 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="3차시로 머신러닝의 즐거움을 경험하고, 직접 만들면서 배우는 체험형 입문서입니다.">
+      
+      
+        <meta name="author" content="Created with Data-AI-Book Generator">
+      
+      
+      
+        <link rel="prev" href="../chapter10/">
+      
+      
+        <link rel="next" href="../chapter12/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>웹 앱으로 만들기 - Gradio 소개 - 3차시 머신러닝 프로젝트</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-11-gradio" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="3차시 머신러닝 프로젝트" class="md-header__button md-logo" aria-label="3차시 머신러닝 프로젝트" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            3차시 머신러닝 프로젝트
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              웹 앱으로 만들기 - Gradio 소개
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 첫 만남 - 머신러닝 체험하기
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter05/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 본격 실습 - 직접 학습시켜보기
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../chapter10/" class="md-tabs__link">
+          
+  
+  
+  Part 3 - 응용과 발전 - 나만의 프로젝트 만들기
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="3차시 머신러닝 프로젝트" class="md-nav__button md-logo" aria-label="3차시 머신러닝 프로젝트" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    3차시 머신러닝 프로젝트
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 첫 만남 - 머신러닝 체험하기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 첫 만남 - 머신러닝 체험하기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    머신러닝, 이게 뭐길래?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    환경 준비하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5줄로 만드는 첫 AI - 손글씨 인식기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1차시 마무리 - 내가 만든 첫 AI 공유하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 본격 실습 - 직접 학습시켜보기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 본격 실습 - 직접 학습시켜보기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    데이터가 없으면 머신러닝도 없다
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    학습용 vs 테스트용 - 데이터 나누기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    첫 학습 - 붓꽃 품종 분류하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    더 재미있는 데이터로 - 타이타닉 생존 예측
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2차시 마무리 - 내 분류기 완성하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3 - 응용과 발전 - 나만의 프로젝트 만들기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 3 - 응용과 발전 - 나만의 프로젝트 만들기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    분류 말고 회귀 - 숫자 예측하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    웹 앱으로 만들기 - Gradio 소개
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    웹 앱으로 만들기 - Gradio 소개
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        코드만으로는 부족해!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gradio가 해결해줘!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradio_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실제로 Gradio가 쓰이는 곳
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-gradio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: Gradio란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: Interface (인터페이스)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 입력/출력 컴포넌트
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-launch-share" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: launch()와 share
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-0-gradio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 0: Gradio 설치하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-gradio-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 첫 번째 Gradio 앱 - 인사하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    나만의 프로젝트 기획하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    프로젝트 완성하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    공유하고 발표하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3차시 머신러닝, 그 다음은?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        코드만으로는 부족해!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gradio가 해결해줘!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradio_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실제로 Gradio가 쓰이는 곳
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-gradio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: Gradio란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: Interface (인터페이스)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 입력/출력 컴포넌트
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-launch-share" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: launch()와 share
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-0-gradio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 0: Gradio 설치하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-gradio-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 첫 번째 Gradio 앱 - 인사하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-11-gradio">Chapter 11: 웹 앱으로 만들기 - Gradio 소개<a class="headerlink" href="#chapter-11-gradio" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>한 줄 요약</strong>: 머신러닝 모델을 누구나 쓸 수 있는 웹 앱으로 바꾸는 마법, Gradio를 배워보자!</p>
+</blockquote>
+<hr />
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Gradio가 무엇인지, 왜 유용한지 이해할 수 있다</li>
+<li>[ ] 간단한 함수를 웹 인터페이스로 만들 수 있다</li>
+<li>[ ] 다양한 입력/출력 UI 컴포넌트를 설정할 수 있다</li>
+<li>[ ] 머신러닝 모델을 웹 앱으로 배포할 수 있다</li>
+<li>[ ] 만든 웹 앱을 다른 사람과 공유할 수 있다</li>
+</ul>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">코드만으로는 부족해!<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>열심히 만든 머신러닝 모델이 있어. 붓꽃 품종을 예측하거나, 영화 리뷰 감정을 분석하는 모델.</p>
+<p>그런데... 이걸 어떻게 보여줄 수 있을까?</p>
+<div class="highlight"><pre><span></span><code>친구: &quot;와 대단하다! 나도 써볼래!&quot;
+나: &quot;응, 먼저 Python 설치하고, 패키지 깔고, 코드 복사해서...&quot;
+친구: &quot;...그냥 됐어 😅&quot;
+</code></pre></div>
+<p><strong>현실적인 문제들:</strong>
+- 코드를 보여줘도 비개발자는 실행할 수 없음
+- Jupyter Notebook 공유해도 환경 세팅이 어려움
+- "결과만 보여줘"라는 요청에 스크린샷밖에 못 보여줌</p>
+<h3 id="gradio">Gradio가 해결해줘!<a class="headerlink" href="#gradio" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>[Python 코드] ──▶ [Gradio] ──▶ [웹 앱] ──▶ [URL 공유]
+
+친구: &quot;와 대단하다! 나도 써볼래!&quot;
+나: &quot;이 링크 클릭해봐!&quot;
+친구: (버튼 클릭) &quot;오 진짜 되네! 신기하다!&quot;
+</code></pre></div>
+<p><strong>Gradio로 할 수 있는 것:</strong>
+- 몇 줄의 코드로 웹 UI 생성
+- 링크 하나로 전 세계 누구나 사용 가능
+- 별도 서버 세팅 없이 무료 배포</p>
+<h3 id="gradio_1">실제로 Gradio가 쓰이는 곳<a class="headerlink" href="#gradio_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────┐
+│  🤗 Hugging Face Spaces                        │
+│                                                 │
+│  • Stable Diffusion 데모                       │
+│  • ChatGPT 같은 챗봇 데모                      │
+│  • 음성 인식, 번역 등 수천 개의 AI 앱          │
+│                                                 │
+│  → 대부분 Gradio로 만들어졌어!                 │
+└─────────────────────────────────────────────────┘
+</code></pre></div>
+<hr />
+<h2 id="_4">📚 핵심 개념<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="1-gradio">개념 1: Gradio란?<a class="headerlink" href="#1-gradio" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: Gradio는 마치 <strong>"자동 키오스크 제작기"</strong>와 같아. 네가 만든 기능(함수)을 전달하면, 버튼과 입력창이 있는 키오스크를 자동으로 만들어줘.</p>
+<p><strong>정확한 정의</strong>: Gradio는 Python 함수를 웹 인터페이스로 감싸주는 라이브러리야. 입력을 받고, 함수를 실행하고, 결과를 보여주는 UI를 자동 생성해.</p>
+<p><strong>예시로 확인</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">인사하기</span><span class="p">(</span><span class="n">이름</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;안녕, </span><span class="si">{</span><span class="n">이름</span><span class="si">}</span><span class="s2">!&quot;</span>
+
+<span class="c1"># 이 함수를 Gradio에 전달하면?</span>
+<span class="c1"># → 이름 입력창 + 제출 버튼 + 결과 표시창이 있는 웹페이지 생성!</span>
+</code></pre></div></p>
+<p><strong>쉽게 말하면</strong>: "함수 → 웹 앱" 변환기!</p>
+<hr />
+<h3 id="2-interface">개념 2: Interface (인터페이스)<a class="headerlink" href="#2-interface" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: Interface는 마치 <strong>"주문서 양식"</strong>과 같아. "무엇을 입력받고, 어떤 처리를 하고, 무엇을 출력할지"를 정의하는 틀이야.</p>
+<p><strong>정확한 정의</strong>: <code>gr.Interface</code>는 Gradio의 핵심 클래스로, 함수(fn), 입력(inputs), 출력(outputs)을 연결해서 웹 UI를 만들어.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
+
+<span class="n">gr</span><span class="o">.</span><span class="n">Interface</span><span class="p">(</span>
+    <span class="n">fn</span><span class="o">=</span><span class="n">처리_함수</span><span class="p">,</span>      <span class="c1"># 어떤 작업을 할지</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>     <span class="c1"># 무엇을 입력받을지</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="s2">&quot;text&quot;</span>     <span class="c1"># 무엇을 출력할지</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong>그림으로 이해하기</strong>:
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────┐
+│             gr.Interface                        │
+├─────────────────────────────────────────────────┤
+│                                                 │
+│  inputs        fn(함수)        outputs          │
+│  ┌─────┐       ┌─────┐       ┌─────┐           │
+│  │텍스트│ ───▶ │ 처리 │ ───▶ │텍스트│           │
+│  │입력창│       │     │       │출력창│           │
+│  └─────┘       └─────┘       └─────┘           │
+│                                                 │
+│              [Submit 버튼]                      │
+│                                                 │
+└─────────────────────────────────────────────────┘
+</code></pre></div></p>
+<p><strong>쉽게 말하면</strong>: 입력 → 처리 → 출력 흐름을 정의하는 설계도!</p>
+<hr />
+<h3 id="3">개념 3: 입력/출력 컴포넌트<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: 컴포넌트는 마치 <strong>"레고 블록"</strong>과 같아. 텍스트 입력, 숫자 슬라이더, 이미지 업로드 등 다양한 블록을 조합해서 원하는 UI를 만들어.</p>
+<p><strong>자주 쓰는 컴포넌트들</strong>:</p>
+<div class="highlight"><pre><span></span><code>┌──────────────────────────────────────────────────────────────┐
+│                    입력 컴포넌트 (inputs)                    │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  gr.Textbox()     │  텍스트 입력창        &quot;이름을 입력하세요&quot; │
+│  gr.Number()      │  숫자 입력            [  42  ]          │
+│  gr.Slider()      │  슬라이더             ●────────         │
+│  gr.Checkbox()    │  체크박스             ☑ 동의합니다       │
+│  gr.Radio()       │  라디오 버튼          ○A ●B ○C          │
+│  gr.Dropdown()    │  드롭다운 선택        [선택하세요 ▼]     │
+│  gr.Image()       │  이미지 업로드        [📷 업로드]       │
+│  gr.File()        │  파일 업로드          [📁 파일 선택]    │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│                    출력 컴포넌트 (outputs)                   │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  gr.Textbox()     │  텍스트 표시          &quot;결과: 성공!&quot;      │
+│  gr.Number()      │  숫자 표시            95.7              │
+│  gr.Label()       │  분류 결과            🏷️ 고양이 (98%)   │
+│  gr.Image()       │  이미지 표시          [🖼️ 결과 이미지]  │
+│  gr.Plot()        │  그래프 표시          [📊 차트]         │
+│  gr.Dataframe()   │  표 형태 표시         [📋 테이블]       │
+│  gr.JSON()        │  JSON 데이터          { &quot;key&quot;: &quot;value&quot; }│
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: 원하는 입력/출력 방식을 골라 조립하는 UI 블록!</p>
+<hr />
+<h3 id="4-launch-share">개념 4: launch()와 share<a class="headerlink" href="#4-launch-share" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: <code>launch()</code>는 마치 <strong>"가게 오픈"</strong>과 같아. 준비된 앱을 실제로 켜는 거지. <code>share=True</code>는 "인터넷에 임시 가게 열기"야.</p>
+<p><strong>정확한 정의</strong>:
+- <code>demo.launch()</code>: 로컬에서 웹 앱 실행 (내 컴퓨터에서만 접속 가능)
+- <code>demo.launch(share=True)</code>: 임시 공개 URL 생성 (72시간 동안 누구나 접속 가능)</p>
+<div class="highlight"><pre><span></span><code>launch() 만:
+┌─────────────────────────────────────────┐
+│  Running on local URL: http://127.0.0.1:7860  │
+│                                               │
+│  → 내 컴퓨터에서만 접속 가능                  │
+└───────────────────────────────────────────────┘
+
+launch(share=True):
+┌───────────────────────────────────────────────┐
+│  Running on local URL: http://127.0.0.1:7860  │
+│  Running on public URL: https://abcd1234.gradio.live  │
+│                                               │
+│  → 전 세계 누구나 접속 가능! (72시간)          │
+└───────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: launch()는 앱 실행, share=True는 인터넷 공개!</p>
+<hr />
+<h2 id="_5">🔨 따라하기<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="step-0-gradio">Step 0: Gradio 설치하기<a class="headerlink" href="#step-0-gradio" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: Gradio 패키지 설치</p>
+<p><strong>코드</strong>:
+<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: Gradio 설치하기 ===</span>
+<span class="c1"># Colab에서는 이미 설치되어 있을 수 있지만, 최신 버전을 위해 실행</span>
+
+<span class="c1"># --- WHY: Gradio 사용을 위해 패키지가 필요해 ---</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">gradio</span> <span class="o">-</span><span class="n">q</span>  <span class="c1"># -q는 설치 로그를 간단히 보여줌</span>
+</code></pre></div></p>
+<p><strong>실행 결과</strong>:
+<div class="highlight"><pre><span></span><code>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100%
+</code></pre></div></p>
+<p><strong>여기서 잠깐! 🤔</strong>
+설치 후 <strong>런타임 재시작이 필요할 수 있어</strong>. 에러가 나면 "런타임 → 런타임 다시 시작"을 해보자!</p>
+<hr />
+<h3 id="step-1-gradio-">Step 1: 첫 번째 Gradio 앱 - 인사하기<a class="headerlink" href="#step-1-gradio-" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 가장 간단한 Gradio 앱 만들기</p>
+<p><strong>코드</strong>:
+<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 첫 번째 Gradio 앱 만들기 ===</span>
+<span class="c1"># 이름을 입력받아 인사말을 출력하는 간단한 앱</span>
+
+<span class="c1"># --- WHY: Gradio의 기본 구조를 이해하기 위해 ---</span>
+
+<span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>  <span class="c1"># Gradio 라이브러리 불러오기 (gr로 줄여서 사용)</span>
+
+<span class="c1"># 처리 함수 정의</span>
+<span class="k">def</span> <span class="nf">인사하기</span><span class="p">(</span><span class="n">이름</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;입력받은 이름으로 인사말을 만들어 반환&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;안녕하세요, </span><span class="si">{</span><span class="n">이름</span><span class="si">}</span><span class="s2">님! 반갑습니다! 🎉&quot;</span>
+
+<span class="c1"># Gradio 인터페이스 생성</span>
+<span class="n">demo</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Interface</span><span class="p">(</span>
+    <span class="n">fn</span><span class="o">=</span><span class="n">인사하기</span><span class="p">,</span>        <span class="c1"># 실행할 함수</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>      <span class="c1"># 입력: 텍스트</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>     <span class="c1"># 출력: 텍스트</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;🤗 인사하기 앱&quot;</span><span class="p">,</span>  <span class="c1"># 앱 제목</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;이름을 입력하면 인사해드려요!&quot;</span>  <span class="c1"># 앱 설명</span>
+<span class="p">)</span>
+
+<span class="c1"># 앱 실행</span>
+<span class="n">demo</span><span class="o">.</span><span class="n">launch</span><span class="p">()</span>
+</code></pre></div></p>
+<p><strong>실행 결과</strong>:
+<div class="highlight"><pre><span></span><code>Running on local URL:  http://127.0.0.1:7860
+
+To create a public link, set `share=True` in `launch()`.
+</code></pre></div></p>
+<p>그리고 아래에 웹 인터페이스가 나타나!</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────┐
+│         🤗 인사하기 앱                       │
+│   이름을 입력하면 인사해드려요!              │
+├─────────────────────────────────────────────┤
+│                                             │
+│   이름                                      │
+│   ┌───────────────────────────────┐         │
+│   │                               │         │
+│   └───────────────────────────────┘         │
+│                                             │
+│            [Submit] [Clear]                 │
+│                                             │
+│   출력                                      │
+│   ┌───────────────────────────────┐         │
+│   │                               │         │
+│   └───────────────────────────────┘         │
+│                                             │
+└─────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>직접 해보기</strong>:
+1. 입력창에 "홍길동" 입력
+2. Submit 버튼 클릭
+3. 출력창에 "안녕하세요, 홍길동님! 반갑습니다! 🎉" 나타남!</p>
+<p><strong>여기서 잠깐! 🤔</strong>
+- `fn</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

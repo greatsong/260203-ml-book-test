@@ -1,0 +1,1614 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="3차시로 머신러닝의 즐거움을 경험하고, 직접 만들면서 배우는 체험형 입문서입니다.">
+      
+      
+        <meta name="author" content="Created with Data-AI-Book Generator">
+      
+      
+      
+        <link rel="prev" href="../chapter05/">
+      
+      
+        <link rel="next" href="../chapter07/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>학습용 vs 테스트용 - 데이터 나누기 - 3차시 머신러닝 프로젝트</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-6-vs-" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="3차시 머신러닝 프로젝트" class="md-header__button md-logo" aria-label="3차시 머신러닝 프로젝트" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            3차시 머신러닝 프로젝트
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              학습용 vs 테스트용 - 데이터 나누기
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 첫 만남 - 머신러닝 체험하기
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../chapter05/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 본격 실습 - 직접 학습시켜보기
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter10/" class="md-tabs__link">
+          
+  
+  
+  Part 3 - 응용과 발전 - 나만의 프로젝트 만들기
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="3차시 머신러닝 프로젝트" class="md-nav__button md-logo" aria-label="3차시 머신러닝 프로젝트" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    3차시 머신러닝 프로젝트
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 첫 만남 - 머신러닝 체험하기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 첫 만남 - 머신러닝 체험하기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    머신러닝, 이게 뭐길래?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    환경 준비하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5줄로 만드는 첫 AI - 손글씨 인식기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1차시 마무리 - 내가 만든 첫 AI 공유하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 본격 실습 - 직접 학습시켜보기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 본격 실습 - 직접 학습시켜보기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    데이터가 없으면 머신러닝도 없다
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    학습용 vs 테스트용 - 데이터 나누기
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    학습용 vs 테스트용 - 데이터 나누기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        시험의 진짜 목적을 생각해봐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        머신러닝도 똑같아
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실제 사례로 보면
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-training-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 학습 데이터(Training Data)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-test-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 테스트 데이터(Test Data)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-overfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 과적합(Overfitting)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 분할 비율
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-random_state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 5: random_state (재현성)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 필요한 도구 불러오기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 샘플 데이터 준비하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    첫 학습 - 붓꽃 품종 분류하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    더 재미있는 데이터로 - 타이타닉 생존 예측
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2차시 마무리 - 내 분류기 완성하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3 - 응용과 발전 - 나만의 프로젝트 만들기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 3 - 응용과 발전 - 나만의 프로젝트 만들기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    분류 말고 회귀 - 숫자 예측하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    웹 앱으로 만들기 - Gradio 소개
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    나만의 프로젝트 기획하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    프로젝트 완성하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    공유하고 발표하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3차시 머신러닝, 그 다음은?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        시험의 진짜 목적을 생각해봐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        머신러닝도 똑같아
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실제 사례로 보면
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-training-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 학습 데이터(Training Data)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-test-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 테스트 데이터(Test Data)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-overfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 과적합(Overfitting)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 분할 비율
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-random_state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 5: random_state (재현성)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 필요한 도구 불러오기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 샘플 데이터 준비하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-6-vs-">Chapter 6: 학습용 vs 테스트용 - 데이터 나누기<a class="headerlink" href="#chapter-6-vs-" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>한 줄 요약</strong>: 시험 문제를 미리 보고 공부하면 진짜 실력을 알 수 없듯이, 머신러닝도 학습에 사용하지 않은 데이터로 평가해야 진짜 성능을 알 수 있어요.</p>
+</blockquote>
+<hr />
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] 왜 데이터를 학습용과 테스트용으로 나눠야 하는지 설명할 수 있다</li>
+<li>[ ] train_test_split 함수를 사용해 데이터를 분할할 수 있다</li>
+<li>[ ] 과적합(overfitting)의 개념을 이해하고 예시를 들 수 있다</li>
+<li>[ ] 적절한 분할 비율을 선택할 수 있다</li>
+<li>[ ] random_state의 역할을 이해한다</li>
+</ul>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">시험의 진짜 목적을 생각해봐<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>학교 시험은 왜 볼까요? <strong>"이 학생이 개념을 진짜 이해했는지"</strong> 확인하기 위해서죠.</p>
+<p>그런데 만약:
+- 시험 문제를 미리 알려주고
+- 그 문제만 달달 외워서
+- 100점을 맞았다면?</p>
+<p>이 학생이 <strong>진짜 실력</strong>이 있는 걸까요? 아니죠. <strong>"처음 보는 문제"</strong>도 풀 수 있어야 진짜 실력이에요.</p>
+<h3 id="_4">머신러닝도 똑같아<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>모델이 학습한 데이터로 평가하면?
+→ 당연히 잘 맞춤 (문제를 이미 알고 있으니까!)
+→ 하지만 새로운 데이터가 들어오면? 💥 실패
+
+모델이 처음 보는 데이터로 평가하면?
+→ 진짜 실력 확인 가능
+→ 실제로 사용해도 비슷한 성능 기대 가능
+</code></pre></div>
+<h3 id="_5">실제 사례로 보면<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><strong>😱 나쁜 예시</strong>: 
+- 쇼핑몰에서 고객 이탈 예측 모델을 만들었어
+- 학습에 쓴 데이터로 테스트했더니 정확도 99%! 🎉
+- 실제 서비스에 적용했더니... 정확도 60% 😭
+- 왜? 모델이 데이터를 "외워버린" 거야</p>
+<p><strong>😊 좋은 예시</strong>:
+- 데이터를 학습용 80%, 테스트용 20%로 나눔
+- 학습용으로만 훈련, 테스트용으로 평가
+- 테스트 정확도 85%
+- 실제 서비스에서도 비슷하게 85% 정도 성능 유지! ✨</p>
+<hr />
+<h2 id="_6">📚 핵심 개념<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="1-training-data">개념 1: 학습 데이터(Training Data)<a class="headerlink" href="#1-training-data" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: 학습 데이터는 마치 <strong>교과서와 문제집</strong>이야. 시험 전에 열심히 공부하는 자료지.</p>
+<p><strong>정확히 말하면</strong>: 모델이 패턴을 배우는 데 사용하는 데이터야. 모델은 이 데이터를 보면서 "아, 이런 특징이 있으면 이런 결과가 나오는구나"를 학습해.</p>
+<p><strong>예를 들어</strong>:
+<div class="highlight"><pre><span></span><code>학습 데이터 예시 (주택 가격 예측)
+┌─────────────────────────────────────────────┐
+│  면적   │  방 개수  │  위치   │  가격(정답)  │
+├─────────────────────────────────────────────┤
+│  50㎡   │    2     │  서울   │   3억원     │
+│  80㎡   │    3     │  부산   │   2억원     │
+│  100㎡  │    4     │  서울   │   5억원     │
+│  ...    │   ...    │  ...   │   ...       │
+└─────────────────────────────────────────────┘
+           ↓
+    모델이 이걸 보면서 배움:
+    &quot;면적이 크고, 서울이면 가격이 높구나!&quot;
+</code></pre></div></p>
+<p><strong>쉽게 말하면</strong>: 모델이 공부하는 교재!</p>
+<hr />
+<h3 id="2-test-data">개념 2: 테스트 데이터(Test Data)<a class="headerlink" href="#2-test-data" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: 테스트 데이터는 마치 <strong>본 시험 문제</strong>야. 학습할 때는 절대 보면 안 되고, 오직 실력 평가용으로만 써.</p>
+<p><strong>정확히 말하면</strong>: 모델의 실제 성능을 평가하기 위해 학습 과정에서 전혀 사용하지 않는 데이터야.</p>
+<p><strong>예를 들어</strong>:
+<div class="highlight"><pre><span></span><code>테스트 데이터 (모델이 처음 보는 것!)
+┌─────────────────────────────────────────────┐
+│  면적   │  방 개수  │  위치   │  가격(정답)  │
+├─────────────────────────────────────────────┤
+│  70㎡   │    2     │  서울   │   ???       │
+│  90㎡   │    3     │  대구   │   ???       │
+└─────────────────────────────────────────────┘
+           ↓
+    모델에게 물어봄: &quot;가격이 얼마일 것 같아?&quot;
+           ↓
+    모델 예측:      [3.5억원]  [2.3억원]
+    실제 정답:      [3.8억원]  [2.1억원]
+           ↓
+    평가: &quot;음, 꽤 가깝네! 성능 괜찮은 편이야&quot;
+</code></pre></div></p>
+<p><strong>쉽게 말하면</strong>: 모델의 진짜 실력을 확인하는 시험 문제!</p>
+<hr />
+<h3 id="3-overfitting">개념 3: 과적합(Overfitting)<a class="headerlink" href="#3-overfitting" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: 과적합은 마치 <strong>시험 문제를 통째로 외운 학생</strong>이야. 교과서 문제는 100점인데, 조금만 다른 문제 나오면 못 푸는 거지.</p>
+<p><strong>정확히 말하면</strong>: 모델이 학습 데이터에 지나치게 맞춰져서, 새로운 데이터에 대한 예측력이 떨어지는 현상이야.</p>
+<p><strong>예를 들어</strong>:
+<div class="highlight"><pre><span></span><code>과적합된 모델의 특징
+┌─────────────────────────────────────────────┐
+│              │  정상 모델  │  과적합 모델   │
+├─────────────────────────────────────────────┤
+│  학습 데이터  │   85%     │    99%       │  ← 과적합은 여기서 너무 높아
+│  테스트 데이터 │   83%     │    60%       │  ← 여기서 확 떨어짐
+└─────────────────────────────────────────────┘
+
+차이가 크면 = 과적합! ⚠️
+</code></pre></div></p>
+<p><strong>시각적으로 이해하기</strong>:
+<div class="highlight"><pre><span></span><code>        정상 모델                    과적합 모델
+
+    y │    ○                     y │    ○
+      │  ○   ○                     │  ○   ○
+      │ ───────── (부드러운 선)      │ ∿∿∿∿∿∿∿ (구불구불한 선)
+      │○       ○                   │○       ○
+      └──────────── x              └──────────── x
+
+    새 데이터도 잘 맞춤            학습 데이터만 정확히 맞춤
+                                  새 데이터는 틀릴 가능성 높음
+</code></pre></div></p>
+<p><strong>쉽게 말하면</strong>: 교과서 내용을 "이해"한 게 아니라 "암기"한 상태!</p>
+<hr />
+<h3 id="4">개념 4: 분할 비율<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p><strong>일반적인 비율</strong>:
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────┐
+│               전체 데이터 100%               │
+├─────────────────────────────────────────────┤
+│  ██████████████████████████  │  ████████   │
+│        학습용 80%             │  테스트 20% │
+└─────────────────────────────────────────────┘
+
+가장 많이 쓰는 비율: 80:20 또는 70:30
+</code></pre></div></p>
+<p><strong>데이터 양에 따른 가이드</strong>:
+| 데이터 개수 | 추천 분할 | 이유 |
+|------------|----------|------|
+| 100개 미만 | 70:30 | 테스트에 충분한 샘플 필요 |
+| 100~1000개 | 80:20 | 표준적인 비율 |
+| 1000개 이상 | 90:10도 가능 | 학습에 더 많은 데이터 할당 |</p>
+<p><strong>쉽게 말하면</strong>: 보통 80%는 공부용, 20%는 시험용!</p>
+<hr />
+<h3 id="5-random_state">개념 5: random_state (재현성)<a class="headerlink" href="#5-random_state" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: random_state는 마치 <strong>뽑기 기계의 시작 위치</strong>야. 같은 위치에서 시작하면 항상 같은 순서로 뽑혀.</p>
+<p><strong>정확히 말하면</strong>: 데이터를 무작위로 섞을 때 사용하는 시드(seed) 값이야. 같은 숫자를 넣으면 항상 같은 방식으로 데이터가 나뉘어.</p>
+<p><strong>예를 들어</strong>:
+<div class="highlight"><pre><span></span><code><span class="c1"># random_state가 없으면: 실행할 때마다 다른 결과</span>
+<span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>  <span class="c1"># 매번 다른 분할</span>
+
+<span class="c1"># random_state가 있으면: 항상 같은 결과</span>
+<span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>  <span class="c1"># 항상 동일한 분할</span>
+</code></pre></div></p>
+<p><strong>왜 중요해?</strong>
+<div class="highlight"><pre><span></span><code>실험 결과를 재현하려면 같은 데이터 분할이 필요해!
+
+상황 1: random_state 없음
+├── 1차 실행: 정확도 85%
+├── 2차 실행: 정확도 82%  ← 데이터가 다르게 나뉘어서 비교 불가
+└── 3차 실행: 정확도 88%
+
+상황 2: random_state=42
+├── 1차 실행: 정확도 85%
+├── 2차 실행: 정확도 85%  ← 항상 같은 결과!
+└── 3차 실행: 정확도 85%
+</code></pre></div></p>
+<p><strong>쉽게 말하면</strong>: 나중에 똑같이 다시 할 수 있게 해주는 "저장 번호"!</p>
+<blockquote>
+<p>💡 <strong>42는 왜 자주 쓸까?</strong><br />
+"은하수를 여행하는 히치하이커를 위한 안내서"라는 소설에서 "삶, 우주, 그리고 모든 것에 대한 답"이 42라서, 프로그래머들이 재미로 자주 써요. 아무 숫자나 써도 돼!</p>
+</blockquote>
+<hr />
+<h2 id="_7">🔨 따라하기<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="step-1">Step 1: 필요한 도구 불러오기<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 데이터 분할에 필요한 라이브러리를 불러와요.</p>
+<p><strong>코드</strong>:
+<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 필요한 라이브러리 불러오기 ===</span>
+<span class="c1"># 데이터 분할과 샘플 데이터를 위한 도구들을 준비해요</span>
+
+<span class="c1"># --- WHY: 각각의 역할 ---</span>
+<span class="c1"># sklearn.model_selection: 데이터 분할 함수 제공</span>
+<span class="c1"># sklearn.datasets: 연습용 샘플 데이터 제공</span>
+<span class="c1"># pandas: 데이터를 표 형태로 다루기</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>  <span class="c1"># 데이터 분할 함수</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>               <span class="c1"># 붓꽃 샘플 데이터</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                  <span class="c1"># 데이터프레임 도구</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ 라이브러리 불러오기 완료!&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>실행 결과</strong>:
+<div class="highlight"><pre><span></span><code>✅ 라이브러리 불러오기 완료!
+</code></pre></div></p>
+<p><strong>여기서 잠깐! 🤔</strong>
+- <code>sklearn</code>은 "사이킷런"이라고 읽어요
+- 머신러닝에서 가장 많이 쓰는 라이브러리 중 하나야
+- <code>train_test_split</code> 함수 하나만 불러오면 데이터 분할 끝!</p>
+<hr />
+<h3 id="step-2">Step 2: 샘플 데이터 준비하기<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 연습용 붓꽃(Iris) 데이터를 불러와서 살펴봐요.</p>
+<p><strong>코드</strong>:
+```python</p>
+<h1 id="what">=== WHAT: 붓꽃 데이터 불러오기 ===<a class="headerlink" href="#what" title="Permanent link">&para;</a></h1>
+<h1 id="_8">머신러닝 입문에서 가장 유명한 샘플 데이터야<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<h1 id="-why-">--- WHY: 왜 붓꽃 데이터? ---<a class="headerlink" href="#-why-" title="Permanent link">&para;</a></h1>
+<h1 id="-150">- 크기가 적당함 (150개)<a class="headerlink" href="#-150" title="Permanent link">&para;</a></h1>
+<h1 id="-">- 이해하기 쉬운 특성들<a class="headerlink" href="#-" title="Permanent link">&para;</a></h1>
+<h1 id="-_1">- 분류 문제 연습에 딱 좋음<a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h1>
+<h1 id="how">HOW: 데이터 로드<a class="headerlink" href="#how" title="Permanent link">&para;</a></h1>
+<p>iris = load_iris()  # 붓꽃 데이터 가져오기</p>
+<h1 id="x">특성 데이터 (X): 꽃잎/꽃받침의 길이와 너비<a class="headerlink" href="#x" title="Permanent link">&para;</a></h1>
+<p>X = iris.data</p>
+<h1 id="_9">정답<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h1>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

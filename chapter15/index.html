@@ -1,0 +1,1429 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="3차시로 머신러닝의 즐거움을 경험하고, 직접 만들면서 배우는 체험형 입문서입니다.">
+      
+      
+        <meta name="author" content="Created with Data-AI-Book Generator">
+      
+      
+      
+        <link rel="prev" href="../chapter14/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>3차시 머신러닝, 그 다음은? - 3차시 머신러닝 프로젝트</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-15-3" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="3차시 머신러닝 프로젝트" class="md-header__button md-logo" aria-label="3차시 머신러닝 프로젝트" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            3차시 머신러닝 프로젝트
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3차시 머신러닝, 그 다음은?
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 첫 만남 - 머신러닝 체험하기
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter05/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 본격 실습 - 직접 학습시켜보기
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../chapter10/" class="md-tabs__link">
+          
+  
+  
+  Part 3 - 응용과 발전 - 나만의 프로젝트 만들기
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="3차시 머신러닝 프로젝트" class="md-nav__button md-logo" aria-label="3차시 머신러닝 프로젝트" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    3차시 머신러닝 프로젝트
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 첫 만남 - 머신러닝 체험하기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 첫 만남 - 머신러닝 체험하기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    머신러닝, 이게 뭐길래?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    환경 준비하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5줄로 만드는 첫 AI - 손글씨 인식기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1차시 마무리 - 내가 만든 첫 AI 공유하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 본격 실습 - 직접 학습시켜보기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 본격 실습 - 직접 학습시켜보기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    데이터가 없으면 머신러닝도 없다
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    학습용 vs 테스트용 - 데이터 나누기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    첫 학습 - 붓꽃 품종 분류하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    더 재미있는 데이터로 - 타이타닉 생존 예측
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2차시 마무리 - 내 분류기 완성하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3 - 응용과 발전 - 나만의 프로젝트 만들기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 3 - 응용과 발전 - 나만의 프로젝트 만들기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    분류 말고 회귀 - 숫자 예측하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    웹 앱으로 만들기 - Gradio 소개
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    나만의 프로젝트 기획하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    프로젝트 완성하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    공유하고 발표하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3차시 머신러닝, 그 다음은?
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3차시 머신러닝, 그 다음은?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 머신러닝의 전체 지도
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 지도학습 vs 비지도학습
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 우리가 배운 알고리즘 정리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 평가 지표 총정리
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 머신러닝의 전체 지도
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 지도학습 vs 비지도학습
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 우리가 배운 알고리즘 정리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 평가 지표 총정리
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-15-3">Chapter 15: 3차시 머신러닝, 그 다음은?<a class="headerlink" href="#chapter-15-3" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>한 줄 요약</strong>: 3차시 동안 배운 머신러닝의 전체 흐름을 정리하고, 더 넓은 AI 세계로 나아갈 다음 단계를 알아봅니다.</p>
+</blockquote>
+<hr />
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] 3차시 동안 배운 머신러닝 개념들을 체계적으로 정리할 수 있다</li>
+<li>[ ] 분류, 회귀, 군집의 차이를 명확히 설명할 수 있다</li>
+<li>[ ] 딥러닝, 자연어처리 등 다음 단계를 이해할 수 있다</li>
+<li>[ ] 머신러닝 학습을 계속할 구체적인 로드맵을 갖는다</li>
+</ul>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>🎓 3차시의 여정
+
+1차시: &quot;컴퓨터도 배울 수 있구나!&quot; → 규칙 vs 학습의 차이
+2차시: &quot;분류, 회귀, 군집... 다 해봤다!&quot; → 핵심 알고리즘 체험
+3차시: &quot;이걸로 뭘 만들 수 있지?&quot; → 실전 프로젝트
+
+그리고 지금: &quot;다음은 뭘 배우지?&quot; → 로드맵 정리
+</code></pre></div>
+<p>축하해! 🎉 정말 대단한 여정을 완주했어.</p>
+<p>많은 사람들이 "AI 배우고 싶다"고 말하지만, 실제로 코드를 작성하고 모델을 학습시켜본 사람은 많지 않아. 너는 이미 그걸 해냈어.</p>
+<p>하지만 머신러닝의 세계는 정말 넓어. 딥러닝, 자연어처리, 컴퓨터 비전, 강화학습... 앞으로 배울 수 있는 것들이 무궁무진해.</p>
+<p><strong>이 장에서는 두 가지를 할 거야</strong>:
+1. 배운 것 정리 - 흩어진 조각들을 하나의 그림으로
+2. 다음 단계 안내 - 어디로 갈지 로드맵 제시</p>
+<hr />
+<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1">개념 1: 머신러닝의 전체 지도<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>3차시 동안 배운 내용을 하나의 지도로 정리해보자.</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                    🗺️ 머신러닝 전체 지도                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ┌─────────────┐                                           │
+│  │  문제 정의   │ &quot;무엇을 예측/분류/발견하고 싶은가?&quot;          │
+│  └──────┬──────┘                                           │
+│         │                                                   │
+│         ▼                                                   │
+│  ┌─────────────┐                                           │
+│  │ 데이터 준비  │ 수집 → 정리 → 탐색 → 전처리                 │
+│  └──────┬──────┘                                           │
+│         │                                                   │
+│         ▼                                                   │
+│  ┌─────────────────────────────────────────┐               │
+│  │            어떤 문제인가?                  │               │
+│  ├─────────────┬─────────────┬─────────────┤               │
+│  │    분류     │    회귀     │    군집      │               │
+│  │  (카테고리)  │   (숫자)    │  (그룹발견)   │               │
+│  │             │             │             │               │
+│  │ &quot;A인가 B인가&quot;│&quot;얼마인가&quot;   │&quot;어떤 패턴?&quot;  │               │
+│  └──────┬──────┴──────┬──────┴──────┬──────┘               │
+│         │             │             │                       │
+│         ▼             ▼             ▼                       │
+│  ┌─────────────┐                                           │
+│  │  모델 학습   │ 훈련 데이터로 패턴 학습                     │
+│  └──────┬──────┘                                           │
+│         │                                                   │
+│         ▼                                                   │
+│  ┌─────────────┐                                           │
+│  │  모델 평가   │ 테스트 데이터로 성능 확인                   │
+│  └──────┬──────┘                                           │
+│         │                                                   │
+│         ▼                                                   │
+│  ┌─────────────┐                                           │
+│  │  실전 활용   │ 새로운 데이터에 적용                        │
+│  └─────────────┘                                           │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: 머신러닝은 "문제 정의 → 데이터 준비 → 유형 선택 → 학습 → 평가 → 활용"의 사이클이야.</p>
+<hr />
+<h3 id="2-vs">개념 2: 지도학습 vs 비지도학습<a class="headerlink" href="#2-vs" title="Permanent link">&para;</a></h3>
+<p>우리가 배운 것들을 두 가지 카테고리로 나눠볼 수 있어.</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                  머신러닝의 두 가지 접근법                     │
+├────────────────────────┬────────────────────────────────────┤
+│      지도학습           │         비지도학습                  │
+│   (Supervised)         │       (Unsupervised)               │
+├────────────────────────┼────────────────────────────────────┤
+│                        │                                    │
+│  &quot;정답을 알려주며 학습&quot;   │    &quot;정답 없이 패턴 발견&quot;            │
+│                        │                                    │
+│  👨‍🏫 선생님이 있음       │    🔍 혼자서 탐험                  │
+│                        │                                    │
+│  ┌──────────────────┐  │  ┌──────────────────────────────┐ │
+│  │ 분류 (Classification)│ │  │ 군집 (Clustering)             │ │
+│  │ → 카테고리 예측    │  │  │ → 비슷한 것끼리 그룹          │ │
+│  │                   │  │  │                              │ │
+│  │ 회귀 (Regression) │  │  │ 차원축소 (Dimensionality      │ │
+│  │ → 숫자 값 예측    │  │  │  Reduction) → 복잡한 데이터   │ │
+│  └──────────────────┘  │  │   단순화 (다음 단계에서!)       │ │
+│                        │  └──────────────────────────────┘ │
+│  예시:                  │  예시:                            │
+│  - 스팸 메일 분류       │  - 고객 세분화                     │
+│  - 집값 예측           │  - 추천 시스템                      │
+│  - 질병 진단           │  - 이상 탐지                       │
+│                        │                                    │
+└────────────────────────┴────────────────────────────────────┘
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: 지도학습은 "정답지를 보며 공부", 비지도학습은 "스스로 규칙 발견"이야.</p>
+<hr />
+<h3 id="3">개념 3: 우리가 배운 알고리즘 정리<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                   📊 알고리즘 총정리                          │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  🔵 분류 (Classification)                                    │
+│  ├── 결정 트리 (Decision Tree)                              │
+│  │   → &quot;20 질문 게임&quot;처럼 질문으로 분류                       │
+│  │   → 장점: 이해하기 쉬움, 시각화 가능                       │
+│  │                                                          │
+│  ├── 랜덤 포레스트 (Random Forest)                          │
+│  │   → 여러 결정 트리의 &quot;다수결 투표&quot;                         │
+│  │   → 장점: 더 정확함, 과적합 방지                          │
+│  │                                                          │
+│  └── 로지스틱 회귀 (Logistic Regression)                    │
+│      → 확률로 분류 (0~100% 스팸일 확률)                      │
+│      → 장점: 확률값 제공, 빠름                               │
+│                                                             │
+│  ────────────────────────────────────────────────────────── │
+│                                                             │
+│  🔴 회귀 (Regression)                                        │
+│  ├── 선형 회귀 (Linear Regression)                          │
+│  │   → 데이터에 &quot;최적의 직선&quot; 긋기                           │
+│  │   → 장점: 단순함, 해석 쉬움                               │
+│  │                                                          │
+│  └── 랜덤 포레스트 회귀                                      │
+│      → 비선형 관계도 학습 가능                                │
+│      → 장점: 복잡한 패턴 포착                                 │
+│                                                             │
+│  ────────────────────────────────────────────────────────── │
+│                                                             │
+│  🟢 군집 (Clustering)                                        │
+│  └── K-Means                                                │
+│      → K개의 중심점을 기준으로 그룹화                         │
+│      → 장점: 간단함, 빠름                                    │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<hr />
+<h3 id="4">개념 4: 평가 지표 총정리<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>"모델이 잘 작동하는지" 어떻게 알 수 있을까?</p>
+<p>```
+┌─────────────────────────────────────────────────────────────┐
+│                   📏 평가 지표 총정리                         │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  분류 문제용:                                                │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ 정확도 (Accuracy)                                    │   │
+│  │ = 전체 중 맞춘 비율                                   │   │
+│  │ → "100개 중 85개 맞춤 = 85%"                         │   │
+│  │                                                      │   │
+│  │ 정밀도 (Precision)                                   │   │
+│  │ = "양성"이라고 예측한 것 중 실제 양성 비율              │   │
+│  │ → "스팸이라고 한 것 중 진짜 스팸"                      │   │
+│  │                                                      │   │
+│  │ 재현율 (Recall)                                      │   │
+│  │ = 실제 양성 중 양성으로 예측한 비율                    │   │
+│  │ → "진짜 스팸 중 찾아낸 스팸"                          │   │
+│  │                                                      │   │
+│  │ F1 점수                                              │   │
+│  │ = 정밀도와 재현율의 조화 평균                          │   │
+│  │ → 둘 다 중요할 때 사용                                │   │
+│  └─────────────────────────────────────────────────────┘   │
+│                                                             │
+│  회귀 문제용:                                                │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ MAE (Mean Absolute Error)                           │   │
+│  │ = 예측값과 실제값 차이의 평균                          │   │
+│  │ → "평균적으로 5만원 정도 틀림"                         │   │
+│  │                                                      │   │
+│  │ RMSE (Root Mean Square Error)                       │   │
+│  │ = 큰 오차에 더 가중치를 주는 지표                      │   │
+│  │ → 큰 실수를 피하고 싶을 때                            │   │
+│  │                                                      │   │
+│  │ R² (결정계수)                                        │   │
+│  │ = 모델이 설명하는 변동의 비율 (0~1)                    │   │
+│  │ → "1에 가까울수록 좋음"                               │   │
+│  └─────────────────────────────────────────────────────┘   │
+│                                                             │
+│  군집 문제용:                                                │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ 실루엣 점수 (Silhouette Score)                       │   │
+│  │ = 군집이 얼마나 잘 분리되었는지 (-1 ~ 1)               │   │
+│  │ → "1에 가까울수록 잘 나뉨"                            │   │
+│  │                                                      │   │
+│  │ 엘보우 방법 (Elbow Method)                           │   │
+│  │ = 최적의 K(군집 수)를 찾는 방법                        │   │
+│  │ → 그래프에서 "팔꿈치" 지점 찾기                        │   │
+│  └─────────────────────────────────────────────────────┘   │
+│                                                             │
+└─────────────────────</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

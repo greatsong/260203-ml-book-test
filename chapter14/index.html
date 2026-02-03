@@ -1,0 +1,1590 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="3차시로 머신러닝의 즐거움을 경험하고, 직접 만들면서 배우는 체험형 입문서입니다.">
+      
+      
+        <meta name="author" content="Created with Data-AI-Book Generator">
+      
+      
+      
+        <link rel="prev" href="../chapter13/">
+      
+      
+        <link rel="next" href="../chapter15/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>공유하고 발표하기 - 3차시 머신러닝 프로젝트</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-14" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="3차시 머신러닝 프로젝트" class="md-header__button md-logo" aria-label="3차시 머신러닝 프로젝트" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            3차시 머신러닝 프로젝트
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              공유하고 발표하기
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 첫 만남 - 머신러닝 체험하기
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter05/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 본격 실습 - 직접 학습시켜보기
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../chapter10/" class="md-tabs__link">
+          
+  
+  
+  Part 3 - 응용과 발전 - 나만의 프로젝트 만들기
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="3차시 머신러닝 프로젝트" class="md-nav__button md-logo" aria-label="3차시 머신러닝 프로젝트" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    3차시 머신러닝 프로젝트
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 첫 만남 - 머신러닝 체험하기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 첫 만남 - 머신러닝 체험하기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    머신러닝, 이게 뭐길래?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    환경 준비하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5줄로 만드는 첫 AI - 손글씨 인식기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1차시 마무리 - 내가 만든 첫 AI 공유하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 본격 실습 - 직접 학습시켜보기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 본격 실습 - 직접 학습시켜보기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    데이터가 없으면 머신러닝도 없다
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    학습용 vs 테스트용 - 데이터 나누기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    첫 학습 - 붓꽃 품종 분류하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    더 재미있는 데이터로 - 타이타닉 생존 예측
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2차시 마무리 - 내 분류기 완성하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3 - 응용과 발전 - 나만의 프로젝트 만들기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 3 - 응용과 발전 - 나만의 프로젝트 만들기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    분류 말고 회귀 - 숫자 예측하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    웹 앱으로 만들기 - Gradio 소개
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    나만의 프로젝트 기획하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    프로젝트 완성하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    공유하고 발표하기
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    공유하고 발표하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-readme-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: README - 프로젝트의 첫인상
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-deploy-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 배포(Deploy) - 세상에 공개하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 피드백 루프 - 계속 나아지는 비결
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-readme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: README 작성하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 사용한 기술
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 향후 개선 계획
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📬 피드백
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3차시 머신러닝, 그 다음은?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-readme-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: README - 프로젝트의 첫인상
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-deploy-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 배포(Deploy) - 세상에 공개하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 피드백 루프 - 계속 나아지는 비결
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-readme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: README 작성하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 사용한 기술
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 향후 개선 계획
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📬 피드백
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-14">Chapter 14: 공유하고 발표하기<a class="headerlink" href="#chapter-14" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>한 줄 요약</strong>: 만든 프로젝트를 다른 사람이 이해하고 써볼 수 있게 정리하고 공유해보자!</p>
+</blockquote>
+<hr />
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] 프로젝트 결과를 README 문서로 정리할 수 있다</li>
+<li>[ ] Gradio 앱을 Hugging Face Spaces에 배포할 수 있다</li>
+<li>[ ] 노트북을 GitHub이나 Colab 링크로 공유할 수 있다</li>
+<li>[ ] 피드백을 받고 개선 방향을 설정할 수 있다</li>
+</ul>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>혼자서 열심히 만든 프로젝트, 컴퓨터 안에만 두면 아무도 모른다.</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────┐
+│                     현실                                 │
+│                                                         │
+│   열심히 만들었어! 🎉                                    │
+│        ↓                                                │
+│   &quot;이거 어떻게 봐?&quot;      →  &quot;내 컴퓨터에서만 돌아가는데...&quot; │
+│   &quot;어떤 프로젝트야?&quot;     →  &quot;설명하기 복잡해...&quot;          │
+│   &quot;나도 써볼 수 있어?&quot;   →  &quot;Python 설치하고...&quot;         │
+│                                                         │
+│   결과: 아무도 안 봄 😢                                  │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p>공유는 단순히 "보여주는 것"이 아니야:</p>
+<ol>
+<li><strong>정리하면서 배운다</strong>: 설명을 쓰다 보면 "어, 이 부분 나도 제대로 이해 못했네?" 발견</li>
+<li><strong>피드백으로 성장한다</strong>: 다른 사람의 시선에서 개선점 발견</li>
+<li><strong>포트폴리오가 된다</strong>: 미래의 나를 증명하는 자산</li>
+<li><strong>누군가에게 도움이 된다</strong>: 네가 겪은 시행착오를 다른 사람은 안 겪어도 됨</li>
+</ol>
+<p><strong>프로 개발자들도 매일 하는 일</strong>: GitHub에 코드 올리고, 문서 쓰고, 블로그에 공유하고!</p>
+<hr />
+<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1-readme-">개념 1: README - 프로젝트의 첫인상<a class="headerlink" href="#1-readme-" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: README는 마치 <strong>영화 예고편</strong>과 같아. 2분 안에 "이 영화 볼까 말까"를 결정하게 만들지? README도 마찬가지야. 30초 안에 "이 프로젝트 뭔지, 쓸 만한지"를 알려줘야 해.</p>
+<p><strong>정확한 정의</strong>: README는 프로젝트의 <strong>소개 문서</strong>야. 무엇을, 왜, 어떻게 만들었는지를 정리해서 다른 사람(또는 미래의 나)이 빠르게 이해할 수 있게 해줘.</p>
+<p><strong>예시로 확인</strong>:
+<div class="highlight"><pre><span></span><code><span class="gh"># 🎬 영화 리뷰 감정 분석기</span>
+
+한 줄로 영화 리뷰의 감정(긍정/부정)을 예측합니다.
+
+<span class="gu">## 사용 방법</span>
+<span class="k">1.</span> 아래 링크를 클릭하세요
+<span class="k">2.</span> 리뷰를 입력하세요
+<span class="k">3.</span> 결과를 확인하세요
+
+👉 [<span class="nt">직접 써보기</span>](<span class="na">https://huggingface.co/spaces/...</span>)
+</code></pre></div></p>
+<p><strong>쉽게 말하면</strong>: "이 프로젝트가 뭔지 1분 안에 이해시키는 문서"</p>
+<hr />
+<h3 id="2-deploy-">개념 2: 배포(Deploy) - 세상에 공개하기<a class="headerlink" href="#2-deploy-" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: 배포는 마치 <strong>음식을 포장해서 배달하는 것</strong>과 같아. 집에서 만든 요리(내 컴퓨터의 코드)를 다른 사람도 먹을 수 있게(웹에서 접근 가능하게) 포장해서 보내는 거야.</p>
+<p><strong>정확한 정의</strong>: 배포(Deploy)는 <strong>로컬에서 작동하는 코드를 인터넷에 올려서 누구나 접근할 수 있게 만드는 과정</strong>이야.</p>
+<p><strong>예시로 확인</strong>:
+<div class="highlight"><pre><span></span><code>배포 전: http://localhost:7860  →  나만 접속 가능
+배포 후: https://myapp.hf.space →  전 세계 누구나 접속 가능!
+</code></pre></div></p>
+<p><strong>쉽게 말하면</strong>: "내 컴퓨터 → 인터넷에 올리기"</p>
+<hr />
+<h3 id="3-">개념 3: 피드백 루프 - 계속 나아지는 비결<a class="headerlink" href="#3-" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: 피드백 루프는 마치 <strong>거울</strong>과 같아. 거울 없이 셀프 헤어컷 할 수 있어? 피드백은 내가 못 보는 뒷모습을 보여줘.</p>
+<p><strong>정확한 정의</strong>: 피드백 루프는 <strong>만들기 → 공유 → 피드백 받기 → 개선 → 다시 공유</strong>의 순환 과정이야. 이 과정을 반복할수록 프로젝트와 실력이 함께 성장해.</p>
+<div class="highlight"><pre><span></span><code>┌─────────┐     ┌─────────┐     ┌─────────┐     ┌─────────┐
+│  만들기  │ ──▶ │  공유   │ ──▶ │ 피드백  │ ──▶ │  개선   │
+└─────────┘     └─────────┘     └─────────┘     └────┬────┘
+      ▲                                              │
+      └──────────────────────────────────────────────┘
+                    반복할수록 성장!
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: "만들고 → 보여주고 → 고치고 → 반복"</p>
+<hr />
+<h2 id="_4">🔨 따라하기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-readme">Step 1: README 작성하기<a class="headerlink" href="#step-1-readme" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 프로젝트를 소개하는 README.md 파일 만들기</p>
+<p><strong>README 구조</strong>:
+<div class="highlight"><pre><span></span><code>┌────────────────────────────────────────────────┐
+│ 프로젝트 제목 + 한 줄 소개                       │  ← 3초 안에 뭔지 파악
+├────────────────────────────────────────────────┤
+│ 데모 링크 / 스크린샷                             │  ← 바로 써보게
+├────────────────────────────────────────────────┤
+│ 설치 방법 / 사용 방법                           │  ← 따라할 수 있게
+├────────────────────────────────────────────────┤
+│ 프로젝트 배경 / 기술 스택                        │  ← 관심 있으면 더 읽기
+├────────────────────────────────────────────────┤
+│ 개선 계획 / 연락처                              │  ← 피드백 유도
+└────────────────────────────────────────────────┘
+</code></pre></div></p>
+<p><strong>코드</strong>:
+<div class="highlight"><pre><span></span><code><span class="gh"># === WHAT: README 템플릿 작성 ===</span>
+<span class="gh"># 프로젝트를 소개하는 문서</span>
+
+<span class="gh"># --- WHY: 다른 사람이 30초 안에 이해할 수 있도록 ---</span>
+
+<span class="gh"># 🎬 영화 리뷰 감정 분석기</span>
+
+<span class="k">&gt; </span><span class="ge">영화 리뷰를 입력하면 긍정/부정을 예측해줍니다.</span>
+
+<span class="gu">## ✨ 데모</span>
+
+👉 <span class="gs">**[직접 써보기](https://huggingface.co/spaces/username/movie-sentiment)**</span>
+
+![<span class="nt">스크린샷</span>](<span class="na">screenshot.png</span>)
+
+<span class="gu">## 🚀 특징</span>
+
+<span class="k">-</span><span class="w"> </span>✅ 한국어 리뷰 지원
+<span class="k">-</span><span class="w"> </span>✅ 실시간 분석 (1초 이내)
+<span class="k">-</span><span class="w"> </span>✅ 확률까지 표시
+
+<span class="gu">## 💻 로컬에서 실행하기</span>
+
+```bash
+<span class="gh"># 1. 저장소 복제</span>
+git clone https://github.com/username/movie-sentiment.git
+
+<span class="gh"># 2. 패키지 설치</span>
+pip install -r requirements.txt
+
+<span class="gh"># 3. 실행</span>
+python app.py
+</code></pre></div></p>
+<h2 id="_5">📊 사용한 기술<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>분류</th>
+<th>기술</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>언어</td>
+<td>Python 3.10</td>
+</tr>
+<tr>
+<td>웹 프레임워크</td>
+<td>Gradio</td>
+</tr>
+<tr>
+<td>ML</td>
+<td>scikit-learn</td>
+</tr>
+<tr>
+<td>데이터</td>
+<td>네이버 영화 리뷰 (학습용)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">🔧 향후 개선 계획<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] 중립 감정 추가</li>
+<li>[ ] 어떤 단어가 영향을 줬는지 표시</li>
+<li>[ ] 더 많은 리뷰로 모델 개선</li>
+</ul>
+<h2 id="_7">📬 피드백<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>버그나 제안이 있으면 Issue를 남겨주세요!</p>
+<hr />
+<p>Made with ❤️ by [이름]
+<div class="highlight"><pre><span></span><code>**여기서 잠깐! 🤔**
+
+README의 핵심은 **&quot;얼마나 짧은 시간 안에 이해시키느냐&quot;**야.
+- 제목 보고 3초: &quot;아, 영화 리뷰 분석하는 거구나&quot;
+- 데모 누르고 30초: &quot;오, 진짜 작동하네&quot;
+- 관심 생기면 나머지 읽기
+
+---
+
+### Step 2: Gradio 앱 Hugging Face Spaces에 배포하기
+
+**목표**: 만든 Gradio 앱을 전 세계에서 접속 가능하게 올리기
+
+**배포 플랫폼 비교**:
+</code></pre></div>
+┌────────────────────────────────────────────────────────────┐
+│                  어디에 배포할까?                           │
+├─────────────────┬──────────────────┬───────────────────────┤
+│ Hugging Face    │ Google Colab     │ Streamlit Cloud      │
+│ Spaces          │ + 공유 링크      │                       │
+├─────────────────┼──────────────────┼───────────────────────┤
+│ ✅ Gradio 최적화 │ ✅ 이미 쓰고 있음 │ ✅ Streamlit 전용     │
+│ ✅ 무료          │ ✅ 설치 필요 없음 │ ✅ GitHub 연동        │
+│ ✅ 영구 링크     │ ⚠️ 시간 제한     │ ⚠️ 무료 제한 있음     │
+├─────────────────┴──────────────────┴───────────────────────┤
+│ 👉 추천: 처음이면 Hugging Face Spaces!                     │
+└────────────────────────────────────────────────────────────┘
+<div class="highlight"><pre><span></span><code>**2-1. Hugging Face 계정 만들기**
+
+1. https://huggingface.co/ 접속
+2. 우측 상단 &quot;Sign Up&quot; 클릭
+3. 이메일로 가입 (GitHub 계정 연동도 가능)
+
+**2-2. 새 Space 만들기**
+
+1. 우측 상단 프로필 → &quot;New Space&quot; 클릭
+2. 설정 입력:
+</code></pre></div>
+Space name: movie-sentiment-analyzer
+License: MIT
+SDK: Gradio
+Hardware: CPU basic (Free)
+Visibility: Public
+<div class="highlight"><pre><span></span><code>3. &quot;Create Space&quot; 클릭
+
+**2-3. 파일 업로드하기**
+
+필요한 파일 3개:
+</code></pre></div>
+my-space/
+├── app.py           ← Gradio 앱 코드
+├── requirements.txt ← 필요한 패키지 목록
+└── README.md        ← 프로젝트 설명 (선택)
+```</p>
+<p><strong>app.py 예시</strong>:
+```python</p>
+<h1 id="what-hugging-face-spaces-gradio">=== WHAT: Hugging Face Spaces용 Gradio 앱 ===<a class="headerlink" href="#what-hugging-face-spaces-gradio" title="Permanent link">&para;</a></h1>
+<h1 id="_8">영화 리뷰의 감정을 분석하는 간단한 웹 앱<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<h1 id="-why-">--- WHY: 전 세계 누구나 내 앱을 써볼 수 있게 ---<a class="headerlink" href="#-why-" title="Permanent link">&para;</a></h1>
+<p>import gradio as gr</p>
+<h1 id="how">HOW: 감정 분석 함수 정의<a class="headerlink" href="#how" title="Permanent link">&para;</a></h1>
+<p>def analyze_sentiment(review):
+    """
+    리뷰 텍스트를 받아서 감정을 분석합니다.
+    실제로는 머신러닝 모델을 사용하겠지만,
+    여기서는 간단한 규칙 기반으로 예시를 보여줍니다.
+    """
+    # --- 간단한 규칙 기반 분석 (예시) ---
+    positive_words = ['좋', '재미', '최고', '감동', '멋', '훌륭', '추천', '사랑']
+    negative_words = ['별로', '지루', '최악', '실망', '낭비', '싫', '후회']</p>
+<div class="codehilite"><pre><span></span><code>positive_count = sum(1 for word in positive_words if word in review)
+negative_count = sum(1 for word in negative_words if word in review)
+
+total = positive_count + negative_count
+if total == 0:
+    return &quot;😐 중립 (판단 어려움)&quot;, 0.5
+
+positive_ratio = positive_count / total
+
+if positive_ratio &gt; 0.6:
+    return f&quot;😊 긍정적&quot;, positive_ratio
+elif positive_ratio &lt; 0.4:
+    return f&quot;😞 부정적&quot;, positive_ratio
+else:
+    return f&quot;😐 중립&quot;, positive_ratio
+</code></pre></div>
+
+<h1 id="how-gradio">HOW: Gradio 인터페이스 생성<a class="headerlink" href="#how-gradio" title="Permanent link">&para;</a></h1>
+<p>demo = gr.Interface(
+    fn=analyze_sentiment,                              # 실행할 함수
+    inputs=gr.Textbox(                                 # 입력 컴포넌트
+        lines=3, 
+        placeholder="영화 리뷰를 입력</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
